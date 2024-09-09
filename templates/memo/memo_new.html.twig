@@ -1,0 +1,24 @@
+{% block body %}
+<div class="container mt-5">
+    <h1 class="text-center">Créer un Nouveau Mémo</h1>
+    {{ form_start(form) }}
+        <div class="form-group">
+            {{ form_label(form.titre) }}
+            {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.titre) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.contenu) }}
+            {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.contenu) }}
+        </div>
+        <div class="form-group">
+            {{ form_label(form.createdAt) }}
+            {{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.createdAt) }}
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Enregistrer</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}
+

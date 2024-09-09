@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+{% block title %}Liste des articles{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Liste des articles</h1>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{{ path('app_blog_new') }}" class="btn btn-primary">Créer un nouvel article</a>
+    </div>
+    {% if posts is not empty %}
+        <div class="row">
+            {% for post in posts %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        {% if post.media %}
+                            {% if post.media ends with ['.jpg', '.jpeg', '.png', '.gif'] %}
+                                <img src="{{ asset('uploads/media/' ~ post.media) }}" class="card-img-top" alt="{{ post.titre }}">
+                            {% elseif post.media ends with ['.mp4', '.webm', '.ogg'] %}
+                                <video controls class="card-img-top">
+                                    <source src="{{ asset('uploads/media/' ~ post.media) }}" type="video/{{ post.media|split('.')|last }}">
+                                    Your browser does not support the video tag.
+                                </video>
+                            {% endif %}
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">{{ post.titre }}</h5>
+                            <p class="card-text">{{ post.contenu|slice(0, 100) ~ '...' }}</p>
+                            <a href="{{ path('app_blog_detail', {id: post.id}) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            Aucun article trouvé.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

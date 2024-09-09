@@ -1,0 +1,90 @@
+body {
+    background-color: rgb(64,161,224);
+}
+
+/* header */
+.navbar-nav .nav-link {
+    color: rgb(64,161,224);
+}
+
+.container.mt-5 {
+    color: white;
+}
+
+.link-white {
+    color: black;
+}
+
+.link-white:hover {
+    color: #e0f7fa; /* Couleur blanche bleutée très claire */
+}
+
+/* footer */
+.footer-custom {
+    color: rgb(64,161,224);
+}
+
+.footer-custom a {
+    color: rgb(64,161,224);
+}
+
+.footer-custom a:hover {
+    color: rgb(64,161,224);
+    text-decoration: underline;
+}
+
+/* Mode nuit */
+.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+
+/* Styles supplémentaires pour le mode nuit */
+.dark-mode .footer-custom {
+    color: black;
+}
+
+.dark-mode .footer-custom a {
+    color: black;
+}
+
+.dark-mode .footer-custom a:hover {
+    color: aqua;
+    text-decoration: underline;
+}
+
+.dark-mode .footer-custom p {
+    color: black;
+}
+
+.dark-mode .footer-custom li {
+    color: black;
+}
+
+/* Styles pour le header en mode nuit */
+.dark-mode .navbar {
+    background-color: #1f1f1f;
+}
+
+.dark-mode .navbar-nav .nav-link:hover {
+    color: black;
+    background-color: aqua;
+}
+
+.dark-mode .navbar-brand h1 {
+    color: black;
+}
+
+.dark-mode .btn-outline-primary {
+    border-color: black;
+    color: black;
+}
+
+.dark-mode .btn-outline-primary:hover {
+    background-color: aqua;
+    color: #121212;
+}
+.dark-mode .navbar-nav .nav-link {
+    
+    color: #121212;
+}

@@ -1,0 +1,38 @@
+{# templates/livredor/list.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Entrées du Livre d'Or{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Témoignages des personnes qui ont eu la chance de me côtoyer :</h1>
+    
+    <div class="row">
+        {% for entry in entries %}
+            <div class="col-md-6 mb-4">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ entry.auteur }}</h5>
+                        <p class="card-text">{{ entry.message }}</p>
+                        {% if entry.media %}
+                            <img src="{{ asset('uploads/media/' ~ entry.media) }}" class="img-fluid mt-3" alt="Media">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info text-center" role="alert">
+                    Aucun témoignage pour le moment. Soyez le premier à laisser un commentaire !
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="{{ path('app_livredor_new') }}" class="btn btn-primary btn-lg">
+            Rédiger une anecdote ou un souvenir
+        </a>
+    </div>
+</div>
+{% endblock %}

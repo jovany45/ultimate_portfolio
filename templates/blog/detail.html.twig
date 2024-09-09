@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+{% block title %}Détail de l'article{% endblock %}
+{% block body %}
+<div class="container mt-5">
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ post.titre }}</h1>
+            {% if post.media %}
+                {% if post.media ends with ['.jpg', '.jpeg', '.png', '.gif'] %}
+                    <img src="{{ asset('uploads/media/' ~ post.media) }}" class="img-fluid mb-3" alt="{{ post.titre }}">
+                {% elseif post.media ends with ['.mp4', '.webm', '.ogg'] %}
+                    <video controls class="img-fluid mb-3">
+                        <source src="{{ asset('uploads/media/' ~ post.media) }}" type="video/{{ post.media|split('.')|last }}">
+                        Your browser does not support the video tag.
+                    </video>
+                {% endif %}
+            {% endif %}
+            <p class="card-text">{{ post.contenu }}</p>
+            <p class="card-text">
+                <small class="text-muted">Créé le {{ post.createdAt|date('d/m/Y H:i') }}</small>
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}

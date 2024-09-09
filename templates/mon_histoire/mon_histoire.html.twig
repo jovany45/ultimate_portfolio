@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Histoire{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">L'Histoire d'un petit franco-chilien</h1>
+    
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Moi, c'est Jovany</h4>
+                    <p class="card-text">Je suis né au Chili le 22 août 1989, j'ai donc 35 ans. J'étais dans un orphelinat jusqu'à l'age de 6 ans. J'ai ensuite été adopté par une famille française, et me voici au pays des lumières !</p>
+                    <video controls class="w-100">
+                        <source src="{{ asset('videos/1ereneige.mp4') }}" type="video/mp4">
+                        Votre navigateur ne supporte pas la balise vidéo.
+                    </video>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Le début des malheurs...</h4>
+                    <p class="card-text">La maladie, cette force contre laquelle on ne peut rien.</p>
+                    <p class="card-text">À 8 ans, j'ai commencé à boiter. Mes pas sont devenus étranges, tout comme les regards que les gens me lançaient. J'ai vite compris que la douleur allait être ma colocataire permanente, que le mal-être serait mon fidèle compagnon, et que les commentaires déplacés allaient m’accompagner à chaque tournant. Je n'ai jamais vraiment accepté d'être ce que je suis.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Mon Parcours</h4>
+                    <p class="card-text">Racontez ici votre parcours, vos expériences professionnelles, vos défis et vos réussites.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Mes Passions</h4>
+                    <p class="card-text">Parlez de vos passions, de ce qui vous motive et de ce qui vous inspire dans la vie.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 mb-4">
+            <div class="card h-100">
+                <div class="card-body">
+                    <h4 class="card-title">Mes Projets Futurs</h4>
+                    <p class="card-text">Décrivez vos projets futurs, vos ambitions et vos objectifs à long terme.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

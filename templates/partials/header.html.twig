@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mon Site{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('app') }}
+        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <div class="navbar-brand d-flex align-items-center">
+                    <img id="photo" src="{{ asset('images/jova.png') }}" alt="moi" class="rounded-circle me-2" width="80" height="80">
+                    <h1 class="h4 mb-0">BERNEZ Jovany</h1>
+                </div>
+                <button class="btn btn-outline-primary ms-auto"><a href="mailto:jovany.bernez@gmail.com" class="text-decoration-none">Écrivez-moi !</a></button>
+                <ul class="navbar-nav ms-3">
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_mon_histoire') }}">Mon histoire</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_projects') }}">Projets réalisés</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_memo_list') }}">Mon Mémo</a></li>
+                    {# <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/jovany.bnz/">Facebook</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jovany-bernez/">LinkedIn</a></li>
+                    <li class="nav-item"><a class="nav-link" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.tiktok.com%2F%40toman.jo%3F_t%3D8pYHIHWOgQC%26_r%3D1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR0fWVcDHV3xKebpawVpjLUaZVvnsVH-LZuETubrQ3BfFi39x8wPKT0Yeq0_aem_z6YxhG1KT8gqS7AVQrA1jw&h=AT20vcnfVQsYRQ24ddb3IPbNHDtI_Hp4WW_wuBXtU9w0FesSpMM_E9n2hhPKU7BS5NGTnkr8o40G1Jh_mKUTxC4dgg_kzILIFh0R9KJQShOre8kWtv5rNXwYVuxnskeeHVZUnwOSdX-UhQAERYY">TikTok</a></li> #}
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_blog') }}">Mon Blog</a></li>                    
+                     
+                    <li class="nav-item"><a class="nav-link" href="{{ path('app_livredor') }}">Témoignages</a></li> 
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    {% block body %}{% endblock %}
+
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+</body>
+</html>

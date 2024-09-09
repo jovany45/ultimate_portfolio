@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvel Article{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Ajouter une publication</h1>
+    <div class="card">
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.titre) }}
+                    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.titre) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.contenu) }}
+                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.contenu) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.createdAt) }}
+                    {{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.createdAt) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.media) }}
+                    {{ form_widget(form.media, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.media) }}
+                </div>
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

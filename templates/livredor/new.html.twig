@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouvelle Entrée{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4">Ajouter une anecdote</h1>
+    {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}}) }}
+        <div class="mb-3">
+            {{ form_label(form.auteur, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.auteur, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.auteur) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.mail, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.mail, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.mail) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.message, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.message, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.message) }}
+        </div>
+        <div class="mb-3">
+            {{ form_label(form.media, null, {'label_attr': {'class': 'form-label'}}) }}
+            {{ form_widget(form.media, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(form.media) }}
+        </div>
+        <button type="submit" class="btn btn-primary">Ajouter</button>
+    {{ form_end(form) }}
+</div>
+{% endblock %}

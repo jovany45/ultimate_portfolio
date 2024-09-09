@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Mémos{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Liste des Mémos</h1>
+    <div class="d-flex justify-content-end mb-3">
+        <a href="{{ path('app_memo_new') }}" class="btn btn-primary">Créer un nouveau mémo</a>
+    </div>
+    {% if memos is not empty %}
+        <div class="row">
+            {% for memo in memos %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ memo.titre }}</h5>
+                            <p class="card-text">{{ memo.contenu|slice(0, 100) ~ '...' }}</p>
+                            <a href="{{ path('app_memo_detail', {id: memo.id}) }}" class="btn btn-primary">Lire la suite</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            Aucun mémo trouvé.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
