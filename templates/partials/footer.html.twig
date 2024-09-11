@@ -21,15 +21,21 @@
                 </ul>
             </div>
         </div>
-        <!--bouton mode nuit -->
-        <button id="toggle-dark-mode" class="btn btn-primary">Mode Nuit</button>
+
+        <div class="container d-flex justify-content-between">
+            <!--bouton mode nuit -->
+            <button id="toggle-dark-mode" class="btn btn-primary">Mode Nuit</button>
+            <button onclick="window.location.href='{{ path('homepage') }}'" class="btn btn-primary">Accueil</button>
+        </div>
         <div class="row">
             <div class="col-12 text-center">
                 <p class="mb-0">&copy; {{ "now"|date("Y") }} Jovany Bernez. Tous droits réservés.</p>
             </div>
         </div>
     </div>
+    
 </footer>
+
 
 {% block javascripts %}
         <script>

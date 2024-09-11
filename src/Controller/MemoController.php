@@ -9,6 +9,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 class MemoController extends AbstractController
@@ -47,7 +51,51 @@ class MemoController extends AbstractController
         ]);
     }
 
-    #[Route('/memo/{id}', name: 'app_memo_detail')]
+    #[Route('/memo/edit/{id}', name: 'app_memo_edit')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function edit(int $id, Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $memo = $entityManager->getRepository(Memo::class)->find($id);
+        if (!$memo) {
+            throw $this->createNotFoundException('Le mémo n\'existe pas.');
+        }
+    
+        $form = $this->createForm(MemoType::class, $memo);
+        $form->handleRequest($request);
+    
+        if ($form->isSubmitted() && $form->isValid()) {
+            /** @var UploadedFile[] $pdfFiles */
+            $pdfFiles = $form->get('pdfFiles')->getData();
+    
+            if ($pdfFiles) {
+                foreach ($pdfFiles as $pdfFile) {
+                    $originalFilename = pathinfo($pdfFile->getClientOriginalName(), PATHINFO_FILENAME);
+                    $newFilename = uniqid().'.'.$pdfFile->guessExtension();
+    
+                    try {
+                        $pdfFile->move(
+                            $this->getParameter('pdf_directory'),
+                            $newFilename
+                        );
+                    } catch (FileException $e) {
+                        // handle exception if something happens during file upload
+                    }
+    
+                    $memo->addPdfFilename($newFilename);
+                }
+            }
+    
+            $entityManager->flush();
+    
+            return $this->redirectToRoute('app_memo_list');
+        }
+
+        return $this->render('memo/memo_edit.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/memo/detail/{id}', name: 'app_memo_detail')]
     public function detail(int $id, EntityManagerInterface $entityManager): Response
     {
         $memo = $entityManager->getRepository(Memo::class)->find($id);
@@ -60,4 +108,21 @@ class MemoController extends AbstractController
             'memo' => $memo,
         ]);
     }
-}
+
+
+    #[Route('/memo/delete/{id}', name: 'app_memo_delete')]
+    #[IsGranted('ROLE_ADMIN')]
+    public function delete(int $id, EntityManagerInterface $entityManager): RedirectResponse
+        {
+            $memo = $entityManager->getRepository(Memo::class)->find($id);
+
+            if (!$memo) {
+                throw $this->createNotFoundException('Le mémo n\'existe pas.');
+            }
+
+            $entityManager->remove($memo);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_memo_list');
+        }
+        }

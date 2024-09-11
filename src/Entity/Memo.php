@@ -23,6 +23,9 @@ class Memo
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     private ?\DateTimeInterface $createdAt = null;
 
+    #[ORM\Column(type: 'json', nullable: true)]
+    private $pdfFilenames = [];
+
     public function getId(): ?int
     {
         return $this->id;
@@ -60,6 +63,25 @@ class Memo
     public function setCreatedAt(?\DateTimeInterface $createdAt): static
     {
         $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getPdfFilenames(): ?array
+    {
+        return $this->pdfFilenames;
+    }
+
+    public function setPdfFilenames(?array $pdfFilenames): self
+    {
+        $this->pdfFilenames = $pdfFilenames;
+
+        return $this;
+    }
+
+    public function addPdfFilename(string $pdfFilename): self
+    {
+        $this->pdfFilenames[] = $pdfFilename;
 
         return $this;
     }

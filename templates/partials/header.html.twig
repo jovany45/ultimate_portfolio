@@ -12,24 +12,40 @@
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="navbar-brand d-flex align-items-center">
-                    <img id="photo" src="{{ asset('images/jova.png') }}" alt="moi" class="rounded-circle me-2" width="80" height="80">
+                    <img id="photo" src="{{ asset('images/jova.png') }}" alt="moi" class="rounded-circle me-2" width="100" height="100">
                     <h1 class="h4 mb-0">BERNEZ Jovany</h1>
                 </div>
-                <button class="btn btn-outline-primary ms-auto"><a href="mailto:jovany.bernez@gmail.com" class="text-decoration-none">Écrivez-moi !</a></button>
-                <ul class="navbar-nav ms-3">
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_mon_histoire') }}">Mon histoire</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_projects') }}">Projets réalisés</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_memo_list') }}">Mon Mémo</a></li>
-                    {# <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/jovany.bnz/">Facebook</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jovany-bernez/">LinkedIn</a></li>
-                    <li class="nav-item"><a class="nav-link" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.tiktok.com%2F%40toman.jo%3F_t%3D8pYHIHWOgQC%26_r%3D1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR0fWVcDHV3xKebpawVpjLUaZVvnsVH-LZuETubrQ3BfFi39x8wPKT0Yeq0_aem_z6YxhG1KT8gqS7AVQrA1jw&h=AT20vcnfVQsYRQ24ddb3IPbNHDtI_Hp4WW_wuBXtU9w0FesSpMM_E9n2hhPKU7BS5NGTnkr8o40G1Jh_mKUTxC4dgg_kzILIFh0R9KJQShOre8kWtv5rNXwYVuxnskeeHVZUnwOSdX-UhQAERYY">TikTok</a></li> #}
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_blog') }}">Mon Blog</a></li>                    
-                     
-                    <li class="nav-item"><a class="nav-link" href="{{ path('app_livredor') }}">Témoignages</a></li> 
-                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="d-flex justify-content-end w-100 mb-3">
+                        {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+                            <a class="btn  btn-outline-primary me-5  night-mode-text btn-sm btn-connexion" href="{{ path('app_login') }}">Connexion</a>
+                        {% endif %}
+                        <a class="btn btn-outline-primary btn-sm me-3" href="mailto:jovany.bernez@gmail.com" class="text-decoration-none">Écrivez-moi !</a>
+                    </div>
+                    <ul class="navbar-nav ms-3">
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_home') }}">Accueil</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_mon_histoire') }}">Mon histoire</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_projects') }}">Projets réalisés</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_memo_list') }}">Mémo</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_blog') }}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ path('app_livredor') }}">Témoignages</a></li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Réseaux Sociaux
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="https://www.facebook.com/jovany.bnz/"><i class="fab fa-facebook-f"></i> Facebook</a></li>
+                                <li><a class="dropdown-item" href="https://www.linkedin.com/in/jovany-bernez/"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
+                                <li><a class="dropdown-item" href="https://www.tiktok.com/@toman.jo"><i class="fab fa-tiktok"></i> TikTok</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </nav>
     </header>

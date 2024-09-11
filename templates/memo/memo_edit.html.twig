@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier le Mémo{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Modifier le Mémo</h1>
+    <div class="card">
+        <div class="card-body">
+            {{ form_start(form) }}
+                <div class="mb-3">
+                    {{ form_label(form.titre, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.titre) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.contenu, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.contenu) }}
+                </div>
+                 <div class="mb-3">
+                    {{ form_label(form.pdfFiles, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.pdfFiles, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.pdfFiles) }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Enregistrer les modifications</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

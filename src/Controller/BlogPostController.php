@@ -60,4 +60,45 @@ class BlogPostController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
+    
+    #[Route('/blog/edit/{id}', name: 'app_blog_edit', requirements: ['id' => '\d+'])]
+    public function edit(int $id, Request $request, EntityManagerInterface $entityManager, BlogPostRepository $blogPostRepository): Response
+    {
+        $post = $blogPostRepository->find($id);
+
+        if (!$post) {
+            throw $this->createNotFoundException('L\'article n\'existe pas.');
+        }
+
+        $form = $this->createForm(BlogPostEntryType::class, $post);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_blog_detail', ['id' => $post->getId()]);
+        }
+
+        return $this->render('blog/edit.html.twig', [
+            'form' => $form->createView(),
+            'post' => $post,
+        ]);
+    }
+
+    #[Route('/blog/delete/{id}', name: 'app_blog_delete', requirements: ['id' => '\d+'], methods: ['POST'])]
+    public function delete(int $id, Request $request, EntityManagerInterface $entityManager, BlogPostRepository $blogPostRepository): Response
+    {
+        $post = $blogPostRepository->find($id);
+
+        if (!$post) {
+            throw $this->createNotFoundException('L\'article n\'existe pas.');
+        }
+
+        if ($this->isCsrfTokenValid('delete'.$post->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($post);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('app_blog');
+    }
 }

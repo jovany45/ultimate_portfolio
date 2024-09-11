@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier l'Article{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">Modifier l'Article</h1>
+    <div class="card">
+        <div class="card-body">
+            {{ form_start(form, {'attr': {'class': 'needs-validation', 'novalidate': 'novalidate'}, 'enctype': 'multipart/form-data'}) }}
+                <div class="mb-3">
+                    {{ form_label(form.titre, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.titre, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.titre) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.contenu, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.contenu) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.media, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.media, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.media) }}
+                </div>
+                <div class="mb-3">
+                    {{ form_label(form.createdAt, null, {'label_attr': {'class': 'form-label'}}) }}
+                    {{ form_widget(form.createdAt, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_errors(form.createdAt) }}
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Enregistrer les modifications</button>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

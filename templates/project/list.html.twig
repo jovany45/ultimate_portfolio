@@ -3,10 +3,34 @@
 {% block title %}Projects{% endblock %}
 
 {% block body %}
-<h1>Projets</h1>
-<ul>
-    {% for project in projects %}
-        <li>{{ project.name }}</li>
-    {% endfor %}
-</ul>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">Projets</h1>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_project_new') }}" class="btn btn-primary">Créer un nouveau projet</a>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% for project in projects %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ project.titre }}</h5>
+                        <p class="card-text">{{ project.description|slice(0, 100) ~ '...' }}</p>
+                        <a href="{{ path('app_project_detail', {'id': project.id}) }}" class="btn btn-primary">Voir le projet</a>
+                         {% if is_granted('ROLE_ADMIN') %}
+                            <a href="{{ path('app_project_edit', {'id': project.id}) }}" class="btn btn-warning mt-2">Modifier</a>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    Aucun projet trouvé.
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}

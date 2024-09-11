@@ -8,65 +8,34 @@
 {% endblock %}
 
 {% block body %}
-{# <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <div class="navbar-brand d-flex align-items-center">
-            <img id="photo" src="{{ asset('images/jova.png') }}" alt="moi" class="rounded-circle me-2" width="80" height="80">
-            <h1 class="h4 mb-0">BERNEZ Jovany</h1>
-        </div>
-        <button class="btn btn-outline-primary ms-auto"><a href="mailto:jovany.bernez@gmail.com" class="text-decoration-none">Écrivez-moi !</a></button>
-        <ul class="navbar-nav ms-3">
-            <li class="nav-item"><a class="nav-link" href="https://www.facebook.com/jovany.bnz/">Facebook</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.linkedin.com/in/jovany-bernez/">LinkedIn</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://l.facebook.com/l.php?u=https%3A%2F%2Fwww.tiktok.com%2F%40toman.jo%3F_t%3D8pYHIHWOgQC%26_r%3D1%26fbclid%3DIwZXh0bgNhZW0CMTAAAR0fWVcDHV3xKebpawVpjLUaZVvnsVH-LZuETubrQ3BfFi39x8wPKT0Yeq0_aem_z6YxhG1KT8gqS7AVQrA1jw&h=AT20vcnfVQsYRQ24ddb3IPbNHDtI_Hp4WW_wuBXtU9w0FesSpMM_E9n2hhPKU7BS5NGTnkr8o40G1Jh_mKUTxC4dgg_kzILIFh0R9KJQShOre8kWtv5rNXwYVuxnskeeHVZUnwOSdX-UhQAERYY">TikTok</a></li>
-             <li class="nav-item"><a class="nav-link" href="{{ path('app_blog') }}">Mon Blog</a></li>
-            <li class="nav-item"><a class="nav-link" href="{{ path('app_projects') }}">Projets réalisés</a></li> 
-            <li class="nav-item"><a class="nav-link" href="{{ path('app_livredor') }}">Témoignages</a></li> 
-        </ul>
-    </div>
-</nav> #}
 
 <div class="container mt-5">
     <header class="text-center mb-5">
-        <h1 class="display-4">Hey, je suis développeur web !</h1>
+        <h1 class="display-4">Hey, je suis <a href="https://www.kara.fr/fiches-metiers/developpeur-web/" target="_blank" class="text-decoration-none text-white" id="dev-web-link">développeur web</a> !</h1>
         <p class="lead">Moi, c'est Jovany, je viens de valider la formation DWWM (développeur web et web mobile) et je compte continuer vers le niveau supérieur !</p>
     </header>
 
-<section class="info mb-5">
-    <div class="card">
-        <div class="card-body">
-            <h4 class="card-title">La formation Développeur Web à <a href="https://www.groupe-ugecam.fr/esrp-beauvoir" target="_blank" class="link-white text-decoration-none">L'ESRP Beauvoir</a></h4>
-            <p class="card-text">L'ESRP (Établissement et Service de Réadaptation Professionnelle) "Beauvoir" situé à Evry Courcouronnes dispense des formations pour adultes en situation d'handicap.</p>
-            <p class="card-text">Titre de niveau 3, la formation de Développeur web permettra, en 16 mois, m'a permis de m'approprier les techniques essentielles de programmation, de maîtriser les langages incontournables tels que HTML, CSS, JavaScript et PHP, ainsi que d'approfondir les méthodologies de développement, le travail en équipe via Git, et l'utilisation des frameworks modernes comme React et Laravel, tout en développant des compétences en résolution de problèmes, gestion de projets, et apprentissage continu dans un domaine en perpétuelle évolution.</p>
-        </div>
-    </div>
-</section>
-
-    <section class="row mb-5">
-        <div class="col-md-6" data-aos="fade-right" data-aos-duration="2000">
-            <img src="{{ asset('images/poste.jpg') }}" class="img-fluid rounded" alt="ça travaille !">
-        </div>
-        <div class="col-md-6" data-aos="fade-right" data-aos-duration="2000">
-            <img src="{{ asset('images/smiling.jpg') }}" class="img-fluid rounded" alt="c'est moi !">
+    <section class="info mb-5">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">La formation Développeur Web à <a href="https://www.groupe-ugecam.fr/esrp-beauvoir" target="_blank" class="link-white text-decoration-none">L'ESRP Beauvoir</a></h4>
+                <p class="card-text">L'ESRP (Établissement et Service de Réadaptation Professionnelle) "Beauvoir" situé à Evry Courcouronnes dispense des formations pour adultes en situation d'handicap.</p>
+                <p class="card-text">Titre de niveau 3, la formation de Développeur web permettra, en 16 mois, m'a permis de m'approprier les techniques essentielles de programmation, de maîtriser les langages incontournables tels que HTML, CSS, JavaScript et PHP, ainsi que d'approfondir les méthodologies de développement, le travail en équipe via Git, et l'utilisation des frameworks modernes comme React et Laravel, tout en développant des compétences en résolution de problèmes, gestion de projets, et apprentissage continu dans un domaine en perpétuelle évolution.</p>
+            </div>
         </div>
     </section>
 
-    {# <section class="projects-section mb-5">
-        <h1 class="text-center mb-4">Projets réalisés</h1>
-        <div class="row">
-            {% for project in projects %} 
-                <div class="col-md-4 mb-4">
-                    <div class="card h-100" data-aos="fade-up" data-aos-duration="1500">
-                        <div class="card-body">
-                            <h4 class="card-title">{{ project.title }}</h4>
-                            <p class="card-text">{{ project.description }}</p>
-                            <p class="card-text"><small class="text-muted">Date {{ project.date }}</small></p>
-                        </div>
-                    </div>
-                </div>
-            {# {% endfor %} #}
+    <section class="row mb-5 g-5">
+        <div class="col-md-4" data-aos="fade-right" data-aos-duration="2000">
+            <img src="{{ asset('images/poste.jpg') }}" class="img-fluid rounded same-height" alt="ça travaille !">
         </div>
-    </section> 
+        <div class="col-md-3" data-aos="fade-right" data-aos-duration="2000">
+            <img src="{{ asset('images/smiling.jpg') }}" class="img-fluid rounded same-height" alt="c'est moi !">
+        </div>
+         <div class="col-md-4" data-aos="fade-right" data-aos-duration="2000">
+            <img src="{{ asset('images/classejo.jpg') }}" class="img-fluid rounded same-height" alt="la classe !">
+        </div>
+    </section>
 </div>
 
 {% block javascripts %}

@@ -3,3 +3,10 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+app_project_edit:
+    path: /project/{id}/edit
+    controller: App\Controller\ProjectController::edit
+    methods: [GET, POST]

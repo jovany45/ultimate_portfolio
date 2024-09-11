@@ -6,7 +6,9 @@
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Liste des Mémos</h1>
     <div class="d-flex justify-content-end mb-3">
+    {% if is_granted('ROLE_ADMIN') %}
         <a href="{{ path('app_memo_new') }}" class="btn btn-primary">Créer un nouveau mémo</a>
+    {% endif %}
     </div>
     {% if memos is not empty %}
         <div class="row">
@@ -17,6 +19,10 @@
                             <h5 class="card-title">{{ memo.titre }}</h5>
                             <p class="card-text">{{ memo.contenu|slice(0, 100) ~ '...' }}</p>
                             <a href="{{ path('app_memo_detail', {id: memo.id}) }}" class="btn btn-primary">Lire la suite</a>
+                             {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_memo_edit', {id: memo.id}) }}" class="btn btn-secondary mt-2">Modifier</a>
+                                <a href="{{ path('app_memo_delete', {id: memo.id}) }}" class="btn btn-danger mt-2" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce mémo ?');">Supprimer</a>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

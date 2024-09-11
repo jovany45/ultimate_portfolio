@@ -16,7 +16,7 @@ body {
 }
 
 .link-white:hover {
-    color: #e0f7fa; /* Couleur blanche bleutée très claire */
+    color: aqua; /* Couleur blanche bleutée très claire */
 }
 
 /* footer */
@@ -61,6 +61,22 @@ body {
     color: black;
 }
 
+.dark-mode .btn-primary {
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.dark-mode .btn-primary:hover {
+    background-color: aqua;
+    border-color: #333333;
+}
+
+/* Positionnement des boutons mode nuit et accueil dans le footer */
+.container.d-flex.justify-content-between {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* Styles pour le header en mode nuit */
 .dark-mode .navbar {
     background-color: #1f1f1f;
@@ -84,7 +100,62 @@ body {
     background-color: aqua;
     color: #121212;
 }
+
 .dark-mode .navbar-nav .nav-link {
-    
-    color: #121212;
+    color: black;
+}
+
+.navbar-nav .btn-sm {
+    font-size: 0.875rem; /* Taille de police plus petite pour les boutons */
+    padding: 0.25rem 0.5rem; /* Ajuste le padding pour les boutons plus petits */
+}
+
+.navbar-nav.mb-2 {
+    margin-bottom: 1rem; /* Ajoute un espace entre les boutons de connexion/déconnexion et les autres boutons */
+}
+
+#dev-web-link:hover {
+    color: #ffcc00 !important;
+}
+
+.dark-mode .night-mode-text {
+    color: #ffffff !important;
+}
+
+/* Styles pour le bouton "Écrivez-moi !" */
+.btn-outline-primary.btn-sm {
+    font-size: 0.875rem; /* Taille de police plus petite pour le bouton */
+    padding: 0.25rem 0.5rem; /* Ajuste le padding pour le bouton plus petit */
+    margin-bottom: 1rem; /* Espace en dessous du bouton */
+}
+
+/* Styles pour les liens de la navbar */
+.navbar-nav .nav-link {
+    margin-bottom: 0.5rem; /* Espace entre les liens */
+}
+
+/* Positionnement des boutons "Connexion" et "Écrivez-moi !" au-dessus des liens de la navbar */
+.navbar-collapse {
+    display: flex;
+    flex-direction: column;
+}
+
+.navbar-collapse .d-flex {
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.navbar-collapse .navbar-nav {
+    width: 100%;
+}
+
+/* Styles pour le bouton "Connexion" en mode nuit */
+.dark-mode .btn-connexion {
+    color: black !important;
+}
+
+/* Styles pour les images de même hauteur */
+.same-height {
+    height: 300px; /* Ajuster cette valeur  */
+    object-fit: cover; /* Pour s'assurer que l'image couvre toute la hauteur sans déformation */
 }

@@ -1,10 +1,14 @@
 {% extends 'base.html.twig' %}
+
 {% block title %}Liste des articles{% endblock %}
+
 {% block body %}
 <div class="container mt-5">
     <h1 class="mb-4 text-center">Liste des articles</h1>
     <div class="d-flex justify-content-end mb-3">
-        <a href="{{ path('app_blog_new') }}" class="btn btn-primary">Créer un nouvel article</a>
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ path('app_blog_new') }}" class="btn btn-primary">Créer un nouvel article</a>
+        {% endif %}
     </div>
     {% if posts is not empty %}
         <div class="row">
@@ -25,6 +29,13 @@
                             <h5 class="card-title">{{ post.titre }}</h5>
                             <p class="card-text">{{ post.contenu|slice(0, 100) ~ '...' }}</p>
                             <a href="{{ path('app_blog_detail', {id: post.id}) }}" class="btn btn-primary">Lire la suite</a>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <a href="{{ path('app_blog_edit', {id: post.id}) }}" class="btn btn-secondary mt-2">Modifier</a>
+                                <form method="post" action="{{ path('app_blog_delete', {id: post.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet article ?');" class="d-inline">
+                                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ post.id) }}">
+                                    <button class="btn btn-danger mt-2">Supprimer</button>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                 </div>

@@ -6,7 +6,10 @@
 parameters:
     locale: 'en'
     media_directory: '%kernel.project_dir%/public/uploads/media'
+    videos_directory: '%kernel.project_dir%/public/uploads/videos'
+    photos_directory: '%kernel.project_dir%/public/uploads/photos'
     upload_directory: '%kernel.project_dir%/public/uploads'
+    pdfs_directory: '%kernel.project_dir%/public/uploads/pdfs'
     app_name: 'Livre Dor'
     
 
